@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/webjars/bootstrap/5.3.1/css/bootstrap.min.css">
+	<script src="/webjars/jquery/3.7.1/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/5.3.1/js/bootstrap.min.js"></script>
+	<script src="/webjars/axios/1.5.0/dist/axios.min.js"></script>
+	<title>Main Page</title>
+	<style type="text/css">
+		body { margin: 10px;}
+		div {
+			border: 1px solid gray;
+			padding: 5px;
+			margin-bottom: 5px;
+			border-radius: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h2>Spring Boot Security!!!!</h2>
+	<hr />
+	<b>서버시간 : [[${today}]]</b> <br />
+	<hr />
+	<form class="form-inline my-2 my-lg-0" form-method="post" th:action="@{/logout}">
+	    <button sec:authorize="isAuthenticated()" class="btn btn-outline-danger my-2 my-sm-0 btn-sm" type="submit">Logout</button>
+	    <button sec:authorize="isAnonymous()" th:href="@{/login}" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Login</button>
+	</form>
+	<hr />
+	<fieldset>
+		<legend>시큐리티 정보</legend>
+		<div sec:authorize="isAuthenticated()">
+			인증이 되었을때 이 내용이 보임
+		</div>
+		<div sec:authorize="hasRole('ROLE_ADMIN')">
+			ROLE_ADMIN 권한이 있을 경우만 이 내용이 보임
+		</div>
+		<div sec:authorize="hasRole('ROLE_USER')">
+			ROLE_USER 권한이 있을 경우만 이 내용이 보임
+		</div>
+		<div>
+			로그인 사용자 : <span sec:authentication="name"></span> <br />
+			로그인 권 &nbsp;&nbsp;한 : <span sec:authentication="principal.authorities"></span>
+		</div>
+		<div sec:authentication="principal"></div>
+	</fieldset>
+</body>
+
+</html>
