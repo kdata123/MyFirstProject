@@ -24,7 +24,7 @@ public class BasicConfiguration {
 
 	// 누구나 접근 가능한 URL들 등록
 	private static final String[] WHITE_LIST = { "/", "/index", "/home", "/today", "/hello", "/html/**", "/css/**",
-			"/images/**", "/css/**", "/axicon/**", "/swagger-ui/**", "/v3/**", "/webjars/**" , "/h2/**"};
+			"/images/**", "/css/**", "/axicon/**", "/swagger-ui/**", "/v3/**", "/webjars/**","/h2/**"};
 
 	
 	@Bean
@@ -33,8 +33,8 @@ public class BasicConfiguration {
 		// h2-console 허용
 		// http.csrf().disable();
 		http.csrf((csrf) -> {
-			csrf.ignoringRequestMatchers(mvc.pattern("/h2/**"));
-			//csrf.disable();
+			// csrf.ignoringRequestMatchers(mvc.pattern("/h2/**"));
+			csrf.disable();
 		})
 		// spring security 적용 후 Refused to display in a frame because it set
 		// 'X-Frame-Options' to 'DENY' 발생 처리
@@ -42,7 +42,6 @@ public class BasicConfiguration {
 		.headers((header) -> {
 			header.frameOptions((frameOptions) -> {
 				frameOptions.sameOrigin();
-				// frameOptions.disable();
 			});
 		})
 		.authorizeHttpRequests((authorize) -> {
@@ -50,8 +49,7 @@ public class BasicConfiguration {
 				// for(String WHITE : WHITE_LIST)  authorize.requestMatchers(mvc.pattern(WHITE)).permitAll();
 				// 스트림을 이용하여 처리
 				authorize.requestMatchers(Stream.of(WHITE_LIST).map(mvc::pattern).toArray(RequestMatcher[]::new)).permitAll();
-				
-				authorize.requestMatchers(PathRequest.toH2Console()).permitAll();
+
 				authorize.requestMatchers(new IpAddressMatcher("127.0.0.1")).permitAll();
 				authorize.requestMatchers(mvc.pattern("/member")).hasAnyRole("USER","ADMIN");
 				authorize.requestMatchers(mvc.pattern("/admin")).hasRole("ADMIN");
