@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/webjars/bootstrap/5.3.1/css/bootstrap.min.css">
+	<script src="/webjars/jquery/3.7.1/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/5.3.1/js/bootstrap.min.js"></script>
+	<script src="/webjars/axios/1.5.0/dist/axios.min.js"></script>
+	<!-- 리액트 시작 -->
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+	<script src="https://ga.jspm.io/npm:es-module-shims@1.4.6/dist/es-module-shims.js"></script>
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+	<!-- 리액트 종료 -->
+	<title>리액트 페이지</title>
+	<style type="text/css">
+		#info {
+			width: 90%;
+			padding: 10px;
+			margin: auto;
+			border: 1px solid gray;
+			border-radius: 30px;
+			margin-bottom: 10px;
+			font-size: 18pt;
+			margin-top: 10px;
+		}
+
+		div.divBox {
+			border: 1px dotted gray;
+			width: 50%;
+			margin: auto;
+			border-radius: 20px;
+			padding: 20px;
+		}
+	</style>
+	<script type="text/babel">
+		function Content() {
+			// 맵을 이용한 데이터의 반복
+			let names = "한놈,두식이,석삼,너구리,오징어".split(",");
+			return (
+				<div className="divBox">
+					<ul>
+						{names.map((name) => (
+							<li key={name}>{name}</li>
+						))}
+					</ul>
+				</div>
+			);
+		}
+		
+		$(function () {
+			const domContainer = document.querySelector('#content');
+			ReactDOM.render(<Content />, domContainer);
+		});
+	</script>
+</head>
+
+<body>
+	<div id="info">
+		<img src="/images/linux-icon.png" alt="귀여운 펭귄" width="100" height="100" />
+		<img src="/images/linux-icon2.png" alt="건방진 펭귄" width="100" height="100" />
+		<hr />
+		<div id="content">여기에 리엑트 내용이 나옴</div>
+		<hr />
+		<a class="btn btn-outline-success" href="/">홈으로</a> <br />
+	</div>
+</body>
+
+</html>

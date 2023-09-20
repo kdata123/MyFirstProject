@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		#info{
+			width: 90%; padding: 10px; margin: auto; border: 1px solid gray;
+			margin-bottom: 10px; font-size: 18pt;
+		}
+	</style>
+</head>
+<body>
+	<div id="info">
+		서버시간 : [[${#dates.format(serverTime,'yyyy년 MM월 dd일(EEEE) HH:mm:ss.S')}]]
+		<hr />
+		<img src="images/linux-icon.png" alt="귀여운 펭귄" width="100" height="100" />
+		<img src="images/linux-icon2.png" alt="건방진 펭귄" width="100" height="100" />	
+		<hr />
+		<a href="/qwerty">qwerty없는주소</a> | 
+		<a href="/div">0으로 나누기</a> | 
+		<a href="/method">Post맵핑을 Get으로</a> | 
+		<a href="/accessDenied">접근 불가페이지</a> 
+	</div>
+</body>
+</html>

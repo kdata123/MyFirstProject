@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>에러페이지</title>
+	<style>
+		.error-message {
+			color: red;
+		}
+		#info {
+			width: 90%;
+			padding: 10px;
+			margin: auto;
+			border: 1px solid gray;
+			border-radius: 20px;
+			margin-bottom: 10px;
+			font-size: 18pt;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="info">
+		<img src="/images/UnderConstruction.png" alt="공사중입니다."/>
+		<hr />
+		<ul>
+			<li th:text="${'상태 : ' + status}">상태
+			<li th:text="${'경로 : ' + path}">경로
+			<li th:text="${'요청시각 : ' + #dates.format(timestamp,'yy-MM-dd(E) hh:mm:ss.S')}">요청시각
+			<li th:text="${'예외 : ' + exception}">예외
+			<li th:text="${'메시지 : ' + message}">메시지
+		</ul>
+		<hr />
+		<div class="error-message">죄송합니다. Error입니다. 신속한 처리를 하겠습니다.</div>
+	</div>
+</body>
+</html>

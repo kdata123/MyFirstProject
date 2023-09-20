@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/webjars/bootstrap/5.3.1/css/bootstrap.min.css">
+	<script src="/webjars/jquery/3.7.1/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/5.3.1/js/bootstrap.min.js"></script>
+	<script src="/webjars/axios/1.5.0/dist/axios.min.js"></script>
+	<title>에러페이지</title>
+	<style type="text/css">
+		#info {
+			width: 90%;
+			padding: 10px;
+			margin: auto;
+			border: 1px solid gray;
+			border-radius: 30px;
+			margin-bottom: 10px;
+			font-size: 18pt;
+			margin-top: 10px;
+		}
+
+		.error-message {
+			color: red;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="info">
+		<img src="images/linux-icon.png" alt="귀여운 펭귄" width="100" height="100" />
+		<img src="images/linux-icon2.png" alt="건방진 펭귄" width="100" height="100" />
+		<hr />
+		<div class="error-message">
+			요청 URI로 식별되는 리소스에 허용되지 않는 상황입니다. 정확하게 사용해 주세요!!!
+		</div>
+		<img src="images/S_UnderConstruction.png" alt="공사중 이미지" />
+		<hr />
+		<ul>
+			<li th:text="${'상태: ' + status}">상태
+			<li th:text="${'경로: ' + path}">경로
+			<li th:text="${'요청시각: ' + timestamp}">요청시각
+			<li th:text="${'예외 ' + exception}">예외
+			<li th:text="${'메시지: ' + message}">메시지
+		</ul>
+		<hr />
+		<a class="btn btn-outline-success" href="/">홈으로</a> <br />
+	</div>
+</body>
+
+</html>
