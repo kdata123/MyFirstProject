@@ -1,0 +1,46 @@
+spring:
+# ---------------------------------------------------------------------
+# H2 DB 설정
+# ---------------------------------------------------------------------
+  h2:
+    console:
+      enabled: true
+      path: /h2
+# ---------------------------------------------------------------------
+# DataSource 설정
+# ---------------------------------------------------------------------
+  datasource:
+    url: jdbc:h2:~/mydb
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+## Database connection pooling properties
+    tomcat.max-wait: 10000
+    tomcat.max-active: 50
+    tomcat.max-idle: 20
+    tomcat.min-idle: 5
+# ---------------------------------------------------------------------
+# jpa 설정
+# ---------------------------------------------------------------------
+  jpa:
+    hibernate:
+      ddl-auto: create  
+      #ddl-auto: update  
+    database-platform: org.hibernate.dialect.H2Dialect
+    show_sql: true 
+    properties:
+      hibernate:
+        format_sql: true
+# ---------------------------------------------------------------------
+# 로그 레벨 설정하기
+# ---------------------------------------------------------------------
+# 전체 로그 레벨 설정(기본 info)
+# logging.level.root=debug
+logging:
+  level:
+    root: info
+# kr.top2blue.boot3 패키지와 그 하위 로그 레벨 설정
+    kr:
+      kdata:
+        security: debug
+# ---------------------------------------------------------------------
