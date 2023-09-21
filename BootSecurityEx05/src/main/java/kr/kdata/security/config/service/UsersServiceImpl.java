@@ -10,6 +10,7 @@ import kr.kdata.security.config.repository.UsersRepository;
 import kr.kdata.security.config.vo.Users;
 import lombok.extern.slf4j.Slf4j;
 
+
 @Service("usersService")
 @Slf4j
 public class UsersServiceImpl implements UsersService {
