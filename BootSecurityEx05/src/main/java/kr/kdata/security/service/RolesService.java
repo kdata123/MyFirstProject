@@ -1,8 +1,8 @@
-package kr.kdata.security.config.service;
+package kr.kdata.security.service;
 
 import java.util.List;
 
-import kr.kdata.security.config.vo.Roles;
+import kr.kdata.security.vo.Roles;
 
 public interface RolesService {
 	List<Roles> selectList();

@@ -1,11 +1,11 @@
-package kr.kdata.security.config.service;
+package kr.kdata.security.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import kr.kdata.security.config.vo.Roles;
-import kr.kdata.security.config.vo.Users;
+import kr.kdata.security.vo.Roles;
+import kr.kdata.security.vo.Users;
 import lombok.extern.slf4j.Slf4j;
 
 @Service("memberService")

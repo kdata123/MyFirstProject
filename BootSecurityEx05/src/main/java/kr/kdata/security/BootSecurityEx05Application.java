@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import kr.kdata.security.config.repository.RolesRepository;
-import kr.kdata.security.config.repository.UsersRepository;
-import kr.kdata.security.config.vo.Roles;
-import kr.kdata.security.config.vo.Users;
+import kr.kdata.security.repository.RolesRepository;
+import kr.kdata.security.repository.UsersRepository;
+import kr.kdata.security.vo.Roles;
+import kr.kdata.security.vo.Users;
 
 @SpringBootApplication
 public class BootSecurityEx05Application {

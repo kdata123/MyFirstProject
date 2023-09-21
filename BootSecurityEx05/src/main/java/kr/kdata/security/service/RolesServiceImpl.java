@@ -1,4 +1,4 @@
-package kr.kdata.security.config.service;
+package kr.kdata.security.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,24 +6,23 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.kdata.security.config.repository.UsersRepository;
-import kr.kdata.security.config.vo.Users;
+import kr.kdata.security.repository.RolesRepository;
+import kr.kdata.security.vo.Roles;
 import lombok.extern.slf4j.Slf4j;
 
-
-@Service("usersService")
+@Service("rolesService")
 @Slf4j
-public class UsersServiceImpl implements UsersService {
+public class RolesServiceImpl implements RolesService{
 
 	@Autowired
-	private UsersRepository usersRepository;
+	private RolesRepository rolesRepository;
 
 	@Override
-	public List<Users> selectList() {
+	public List<Roles> selectList() {
 		log.info("selectList() 호출!!!");
-		List<Users> list = null;
+		List<Roles> list = null;
 		try{
-			list = usersRepository.findAll();
+			list = rolesRepository.findAll();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -32,51 +31,51 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public Users selectById(Long id) {
+	public Roles selectById(Long id) {
 		log.info("selectById({}) 호출!!!", id);
-		Users users = null;
+		Roles roles = null;
 		try {
-			Optional<Users> optional = usersRepository.findById(id);
+			Optional<Roles> optional = rolesRepository.findById(id);
 			if(optional.isPresent()) {
-				users =  optional.get();
+				roles =  optional.get();
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		log.info("selectById({}) 리턴 : {}", id, users);
-		return users;
+		log.info("selectById({}) 리턴 : {}", id, roles);
+		return roles;
 	}
 
 	@Override
-	public boolean insert(Users users) {
-		log.info("insert({}) 호출!!!", users);
+	public boolean insert(Roles roles) {
+		log.info("insert({}) 호출!!!", roles);
 		boolean result = false;
 		try {
-			if(users!=null) {
-				usersRepository.save(users);
+			if(roles!=null) {
+				rolesRepository.save(roles);
 				result = true;
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		log.info("insert({}) 리턴 : {}", users, result);
+		log.info("insert({}) 리턴 : {}", roles, result);
 		return result;
 	}
 
 	@Override
-	public boolean update(Users users) {
-		log.info("update({}) 호출!!!", users);
+	public boolean update(Roles roles) {
+		log.info("update({}) 호출!!!", roles);
 		boolean result = false;
 		try {
-			Optional<Users> optional = usersRepository.findById(users.getId());
+			Optional<Roles> optional = rolesRepository.findById(roles.getId());
 			if(optional.isPresent()) {
-				usersRepository.save(users);
+				rolesRepository.save(roles);
 				result = true;
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		log.info("update({}) 리턴 : {}", users, result);
+		log.info("update({}) 리턴 : {}", roles, result);
 		return result;
 	}
 
@@ -85,9 +84,9 @@ public class UsersServiceImpl implements UsersService {
 		log.info("delete({}) 호출!!!", id);
 		boolean result = false;
 		try {
-			Optional<Users> optional = usersRepository.findById(id);
+			Optional<Roles> optional = rolesRepository.findById(id);
 			if(optional.isPresent()) {
-				usersRepository.deleteById(id);
+				rolesRepository.deleteById(id);
 				result = true;
 			}
 		}catch (Exception e) {

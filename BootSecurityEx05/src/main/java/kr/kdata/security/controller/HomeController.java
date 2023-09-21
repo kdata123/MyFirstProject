@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.kdata.security.config.service.MemberService;
-import kr.kdata.security.config.vo.Users;
+import kr.kdata.security.service.MemberService;
+import kr.kdata.security.vo.Users;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller

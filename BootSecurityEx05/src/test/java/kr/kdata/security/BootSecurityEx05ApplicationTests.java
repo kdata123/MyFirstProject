@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import kr.kdata.security.config.vo.Roles;
-import kr.kdata.security.config.vo.Users;
+import kr.kdata.security.vo.Roles;
+import kr.kdata.security.vo.Users;
 
 @SpringBootTest
 class BootSecurityEx05ApplicationTests {

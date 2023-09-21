@@ -1,4 +1,4 @@
-package kr.kdata.security.config.vo;
+package kr.kdata.security.vo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,14 +15,16 @@ create table users (
     enabled boolean not null
 );
  */
-@Entity
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@AllArgsConstructor
 @Data
-public class Roles {
-	@Id @GeneratedValue
-	private  Long id;
+@Entity
+@Builder
+public class Users {
+	@Id @GeneratedValue 
+	private Long id;
 	private String username;
-	private String role;
+	private String password;
+	private boolean enabled;
+
 }
