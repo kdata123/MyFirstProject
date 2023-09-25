@@ -34,7 +34,7 @@ public class BootJwtEx01Application {
 			System.out.println("-".repeat(80));
 		};
 	}
-	// 토큰생성
+	// 토큰 생성(인코딩)
 	public String makeJwtToken() {
 		/*
 		 * 1. 헤더의 타입(typ)을 지정할 수 있습니다. jwt를 사용하기 때문에 Header.JWT_TYPE로 사용해줍니다. 
@@ -54,7 +54,7 @@ public class BootJwtEx01Application {
 				.compact();
 	}
 	
-	// 토근 파싱
+	// 토근 파싱(디코딩)
 	public Claims parseJwtToken(String authorizationHeader) {
 		/*
 			1. 헤더가 'Bearer'로 시작하는지 검사합니다.
