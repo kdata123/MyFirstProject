@@ -16,4 +16,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				.addPathPatterns("/*") // 해당 경로에 접근하기 전에 인터셉터가 가로챈다.
 				.excludePathPatterns("/main/*"); // 해당 경로는 인터셉터가 가로채지 않는다.
 	}
+	
+	
 }

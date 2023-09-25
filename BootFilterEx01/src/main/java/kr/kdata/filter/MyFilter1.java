@@ -2,6 +2,8 @@ package kr.kdata.filter;
 
 import java.io.IOException;
 
+import org.springframework.boot.web.servlet.ServletComponentScan;
+
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.FilterConfig;
@@ -12,7 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-// @WebFilter(urlPatterns = "/*") // 이것만 쓰면 안됨
+// @WebFilter(urlPatterns = "/*") // 이것만 쓰면 안됨. Application에 @ServletComponentScan을 추가해야 함
 // @Component // 이것을 쓰면 모든 url에 필터 적용. urlPatterns 적용안됨
 // 그럼 어떻게? FilterRegistrationBean을 등록한다.
 // 이유 : https://velog.io/@ansalstmd/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-%EB%8B%A4%EC%96%91%ED%95%9C-%EA%B8%B0%EB%8A%A5-5.-Spring-Boot-Filter%EC%99%80-Interceptor#02-getreader-has-already-been-called-for-this-request-error-%ED%95%B4%EA%B2%B0
