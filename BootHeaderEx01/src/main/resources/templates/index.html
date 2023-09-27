@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+	<script>
+		$(function () {
+			// 응답 헤더 읽기
+			axios.get('/',{
+					// 요청시 헤더값 추가하기
+					headers :{
+						'name' : 'kimc',	
+						'email' : 'kimc@gmail.com',	
+						'nickname' : 'root',	
+					}
+				})
+				.then(function (response) {
+					// 헤더 일부를 추출
+					// alert(response.headers.get('Content-Type')); // application/json; charset=utf-8
+
+					// 헤더 전체를 순회
+					for (let [key, value] of response.headers) {
+						console.log(`root >>> ${key} = ${value}`);
+					}
+					console.log(`---------------------------------------------------------------------`);
+				})
+				.catch(function (error) {
+					// 에러 핸들링
+					console.log(error);
+				})
+				.finally(function () {
+					// 항상 실행되는 영역
+				});
+				
+			axios.get('/api/test2',{
+					// 요청시 헤더값 추가하기
+					headers :{
+						'name' : 'kimc',	
+						'email' : 'kimc@gmail.com',	
+						'nickname' : 'root',	
+					}
+				})
+				.then(function (response) {
+					// 헤더 일부를 추출
+					// alert(response.headers.get('Content-Type')); // application/json; charset=utf-8
+
+					// 헤더 전체를 순회
+					for (let [key, value] of response.headers) {
+						console.log(`test2 >>> ${key} = ${value}`);
+					}
+					console.log(`---------------------------------------------------------------------`);
+				})
+				.catch(function (error) {
+					// 에러 핸들링
+					console.log(error);
+				})
+				.finally(function () {
+					// 항상 실행되는 영역
+				});				
+				
+		   	axios.get('/api/header1')
+				.then(function (response) {
+					// 헤더 일부를 추출
+					// alert(response.headers.get('Content-Type')); // application/json; charset=utf-8
+
+					// 헤더 전체를 순회
+					for (let [key, value] of response.headers) {
+						console.log(`header1 >>> ${key} = ${value}`);
+					}
+					console.log(`---------------------------------------------------------------------`);
+				})
+				.catch(function (error) {
+					// 에러 핸들링
+					console.log(error);
+				})
+				.finally(function () {
+					// 항상 실행되는 영역
+				});
+				
+		   	axios.get('/api/header2')
+				.then(function (response) {
+					// 헤더 전체를 순회
+					for (let [key, value] of response.headers) {
+						console.log("header2 >>> " + key + " = " + decodeURIComponent(value));
+					}
+					console.log(`---------------------------------------------------------------------`);
+				})
+				.catch(function (error) {
+					// 에러 핸들링
+					console.log(error);
+				})
+				.finally(function () {
+					// 항상 실행되는 영역
+				});
+		});
+	</script>
+</head>
+
+<body>
+	<h2>모든 요청 헤더 정보</h2>
+	<hr />
+	[(${header})]
+	<hr />
+	[(${server})]
+	<hr />
+	[(${date})]
+
+</body>
+
+</html>
